@@ -1,7 +1,8 @@
 const APIkey = 'fddd66118ec569d3e86667207b7ec986'
 const searchBtn = document.querySelector('#search-btn')
 let searchBarInput;
-const cardArray = [document.querySelectorAll('.card')]
+const cards = document.querySelectorAll('.card')
+const cardArray = [...cards]
 console.log(cardArray)
 
 function searchClick(event) {
@@ -39,29 +40,30 @@ function weatherQuery(data) {
         .then(function (data) {
             console.log(data)
             var weatherInfoObj = data;
-            cardPop(weatherInfoObj)
+            cardPop(weatherInfoObj, cardArray)
             return;
         })
 }
 
-cardArray.forEach(cardPop);
 
-function cardPop(cardArray, weatherInfoObj) {
-    
-    for (let i = 0; i < cardArray.length; i++) {
-        let temp = weatherInfoObj[i].temp.day;
-        let wind = weatherInfoObj[i].weather.wind_speed;
-        let humidity = weatherInfoObj[i].humidity;
-        let uvi = weatherInfoObj[i].uvi;
-        let cardTemp = document.getElementById('card-temp');
-        let cardWind = document.getElementById('card-wind');
-        let cardHumidity = document.getElementById('card-humidity');
-        let cardUVI = document.getElementById('card-uvi');
-        cardTemp.textContent = temp;
-        cardWind.textContent = wind;
-        cardHumidity.textContent = humidity;
-        cardUVI.textContent = uvi;
+function cardPop(weatherInfoObj, cardArray) {
+   cardArray.forEach((card, i) => {
+        let temp = weatherInfoObj.daily[i].temp.day;
+        let wind = weatherInfoObj.daily[i].weather.wind_speed;
+        let humidity = weatherInfoObj.daily[i].humidity;
+        let uvi = weatherInfoObj.daily[i].uvi;
+        let cardTemp = document.querySelector('.card-temp');
+        let cardWind = document.querySelector('.card-wind');
+        let cardHumidity = document.querySelector('.card-humidity');
+        let cardUVI = document.querySelector('.card-uvi');
+        cardTemp.textContent = 'Tempurature: ' + temp;
+        cardWind.textContent = 'Wind: ' + wind;
+        cardHumidity.textContent = 'Humidity: ' + humidity;
+        cardUVI.textContent = 'UVI: ' + uvi;
+        currentCard++;
+    });
     }
-}
+
 
 searchBtn.addEventListener('click', searchClick)
+
