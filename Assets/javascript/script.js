@@ -49,7 +49,7 @@ function weatherQuery(data) {
 function cardPop(weatherInfoObj) {
     for (let i = 0; i < 5; i++) {
         let temp = weatherInfoObj.daily[i].temp.day;
-        let wind = JSON.stringify(weatherInfoObj.daily[i].weather.wind_speed);
+        let wind = JSON.stringify(weatherInfoObj.daily[i].wind_speed);
         let humidity = weatherInfoObj.daily[i].humidity;
         let uvi = weatherInfoObj.daily[i].uvi;
         let cardTemp = $('.card-temp').eq(i);
@@ -64,10 +64,11 @@ function cardPop(weatherInfoObj) {
     };
 }
 
-// timeclock = function () {
-//     var time = moment().format('[It is currently ] dddd, MMMM Do YYYY [ at ] hh:mm:ss a');
-//     document.querySelector('#currentDay').innerHTML = time;
-// }
+timeclock = function () {
+    var time = moment().format('[It is currently ] dddd, MMMM Do YYYY [ at ] hh:mm:ss a');
+    console.log(time)
+    document.getElementById('current-day').textContent = time;
+}
 
 
 var userInputStore = JSON.parse(localStorage.getItem('userSearch')) || [];
@@ -81,5 +82,5 @@ searchBtn.addEventListener('click', searchClick)
 
 
 
-// timeclock()
-// setInterval(timeclock, 1000)
+timeclock()
+setInterval(timeclock, 1000)
