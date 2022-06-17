@@ -1,7 +1,8 @@
 const APIkey = 'fddd66118ec569d3e86667207b7ec986'
 const searchBtn = document.querySelector('#search-btn')
 let searchBarInput;
-const cardArray = [document.querySelector('.card')]
+const cardArray = [document.querySelectorAll('.card')]
+console.log(cardArray)
 
 function searchClick(event) {
     event.preventDefault();
@@ -37,17 +38,29 @@ function weatherQuery(data) {
         })
         .then(function (data) {
             console.log(data)
+            var weatherInfoObj = data;
+            cardPop(weatherInfoObj)
             return;
         })
 }
 
-function cardPop(dayInfoArray) {
+cardArray.forEach(cardPop);
+
+function cardPop(cardArray, weatherInfoObj) {
+    
     for (let i = 0; i < cardArray.length; i++) {
-        let temp = dayInfoArray[i].temp.day;
-        let wind = dayInfoArray[i].weather.wind_speed;
-        let humidity = dayInfoArray[i].humidity;
-        let uvi = dayInfoArray[i].uvi;
-        
+        let temp = weatherInfoObj[i].temp.day;
+        let wind = weatherInfoObj[i].weather.wind_speed;
+        let humidity = weatherInfoObj[i].humidity;
+        let uvi = weatherInfoObj[i].uvi;
+        let cardTemp = document.getElementById('card-temp');
+        let cardWind = document.getElementById('card-wind');
+        let cardHumidity = document.getElementById('card-humidity');
+        let cardUVI = document.getElementById('card-uvi');
+        cardTemp.textContent = temp;
+        cardWind.textContent = wind;
+        cardHumidity.textContent = humidity;
+        cardUVI.textContent = uvi;
     }
 }
 
