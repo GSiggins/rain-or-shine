@@ -46,24 +46,40 @@ function weatherQuery(data) {
 }
 
 
-function cardPop(weatherInfoObj, cardArray) {
-   cardArray.forEach((card, i) => {
+function cardPop(weatherInfoObj) {
+    for (let i = 0; i < 5; i++) {
         let temp = weatherInfoObj.daily[i].temp.day;
-        let wind = weatherInfoObj.daily[i].weather.wind_speed;
+        let wind = JSON.stringify(weatherInfoObj.daily[i].weather.wind_speed);
         let humidity = weatherInfoObj.daily[i].humidity;
         let uvi = weatherInfoObj.daily[i].uvi;
-        let cardTemp = document.querySelector('.card-temp');
-        let cardWind = document.querySelector('.card-wind');
-        let cardHumidity = document.querySelector('.card-humidity');
-        let cardUVI = document.querySelector('.card-uvi');
-        cardTemp.textContent = 'Tempurature: ' + temp;
-        cardWind.textContent = 'Wind: ' + wind;
-        cardHumidity.textContent = 'Humidity: ' + humidity;
-        cardUVI.textContent = 'UVI: ' + uvi;
-        currentCard++;
-    });
-    }
+        let cardTemp = $('.card-temp').eq(i);
+        let cardWind = $('.card-wind').eq(i);
+        let cardHumidity = $('.card-humidity').eq(i);
+        let cardUVI = $('.card-uvi').eq(i);
+        console.log(cardTemp, cardWind, cardHumidity, cardUVI)
+        cardTemp.text('Tempurature: ' + temp);
+        cardWind.text('Wind: ' + wind);
+        cardHumidity.text('Humidity: ' + humidity);
+        cardUVI.text('UVI: ' + uvi);
+    };
+}
 
+timeclock = function () {
+    var time = moment().format('[It is currently ] dddd, MMMM Do YYYY [ at ] hh:mm:ss a');
+    document.querySelector('#currentDay').innerHTML = time;
+}
+
+
+var userInputStore = JSON.parse(localStorage.getItem('userSearch')) || [];
+var newInput = [
+    ...userInputStore,
+    searchBarInput,
+];
+localStorage.setItem('userSearch', JSON.stringify(newInput));
 
 searchBtn.addEventListener('click', searchClick)
 
+
+
+timeclock()
+setInterval(timeclock, 1000)
