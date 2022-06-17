@@ -64,10 +64,10 @@ function cardPop(weatherInfoObj) {
     };
 }
 
-timeclock = function () {
-    var time = moment().format('[It is currently ] dddd, MMMM Do YYYY [ at ] hh:mm:ss a');
-    document.querySelector('#currentDay').innerHTML = time;
-}
+// timeclock = function () {
+//     var time = moment().format('[It is currently ] dddd, MMMM Do YYYY [ at ] hh:mm:ss a');
+//     document.querySelector('#currentDay').innerHTML = time;
+// }
 
 
 var userInputStore = JSON.parse(localStorage.getItem('userSearch')) || [];
@@ -81,5 +81,5 @@ searchBtn.addEventListener('click', searchClick)
 
 
 
-timeclock()
-setInterval(timeclock, 1000)
+// timeclock()
+// setInterval(timeclock, 1000)
