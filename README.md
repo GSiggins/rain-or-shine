@@ -1,10 +1,10 @@
-#Rain or Shine
+# Rain or Shine
 
 ## Live Link : https://gsiggins.github.io/rain-or-shine/
 
 ## Repo Link : https://github.com/GSiggins/rain-or-shine
 
-###Tools used: 
+### Tools used: 
 
 -HTML/CSS
 
@@ -16,7 +16,7 @@
 
 ==========================================================
 
-####Workflow:
+#### Workflow:
 
 -Created HTML bones using bootstrap and vanilla HTML.
 
