@@ -1,4 +1,4 @@
-const APIkey = 'fddd66118ec569d3e86667207b7ec986'
+// const APIkey = 'fddd66118ec569d3e86667207b7ec986'
 const searchBtn = document.querySelector('#search-btn')
 let searchBarInput;
 const cards = document.querySelectorAll('.card')
