@@ -28,6 +28,8 @@ function geoCodeQuery() {
         })
 }
 
+
+
 function weatherQuery(data) {
     let lat = data[0].lat;
     let lon = data[0].lon;
